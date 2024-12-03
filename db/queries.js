@@ -5,4 +5,8 @@ async function getAllData() {
     return rows
 }
 
-module.exports = { getAllData }
+async function addDataEntry(entry) {
+    await pool.query(`INSERT INTO plants (product, description, category, price, quantity) VALUES ('${entry.product}', '${entry.description}', '${entry.category}', '${Number(entry.price)}', '${Number(entry.quantity)}')`)
+}
+
+module.exports = { getAllData, addDataEntry }

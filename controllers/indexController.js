@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { getAllData } = require('../db/queries')
+const { getAllData, addDataEntry } = require('../db/queries')
 
 async function getData(req, res) {
     const data = await getAllData();
@@ -13,7 +13,8 @@ function createDataEntryGet(req, res) {
 
 async function createDataEntryPost(req, res) {
     const entry = req.body;
-    console.log(entry)
+    addDataEntry(entry);
+    res.redirect('/');
 }
 
 
